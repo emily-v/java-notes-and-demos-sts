@@ -1,0 +1,15 @@
+package garbage;
+
+public class Library {
+
+	public static void main(String[] args) {
+
+		// Literally the most generic thing a thing can be
+		Object o = new Object();
+		// b returns the overridden toString method
+		Object b = new Book("Fahrenheit 451", 200);
+		
+		System.out.println(b.toString()); // built in method
+	}
+
+}

@@ -1,0 +1,21 @@
+package stringfun;
+
+import garbage.Book;
+
+public class StringEx {
+
+	public static void main(String[] args) {
+		
+		Book b = new Book("Frankenstein", 100);
+		Book b2 = new Book("Frankenstein", 100);
+		
+		int x = 10;
+		int y = 10;
+		
+		// == with primitives checkes the value of variables
+		System.out.println(x==y);
+		System.out.println(b==b2);
+
+	}
+
+}

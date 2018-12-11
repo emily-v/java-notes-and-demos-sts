@@ -1,0 +1,16 @@
+package scope;
+
+public class Warehouse {
+
+	public static void main(String[] args) {
+		
+		Box a = new Box();
+		a.value = 1000;
+		
+		Box b = new Box();
+		b.value = 2000;
+		
+		a.printValue();
+		b.printValue();
+	}
+}

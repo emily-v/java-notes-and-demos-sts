@@ -1,0 +1,26 @@
+package wrapper;
+
+public class Wrapper {
+
+	public static void main(String[] args) {
+		
+		// Primitive variable. Lives in the stack
+		int x = 100;
+		// Wrapper class. It is an object that holds a primitive value
+		Integer y = 100;
+		
+		// Primitive / Wrapper
+		// int Integer
+		// byte Byte
+		// short Short
+		// long Long
+		// float Float
+		// double Double
+		// char Character
+		// boolean Boolean
+
+		
+		System.out.println(x==y);
+	}
+
+}

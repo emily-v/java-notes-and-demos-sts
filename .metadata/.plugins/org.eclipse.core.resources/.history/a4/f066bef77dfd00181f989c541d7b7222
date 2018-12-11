@@ -1,0 +1,25 @@
+package stringfun;
+
+public class StringFun {
+
+	public static void main(String[] args) {
+		
+		// To make a string you don't have to use the new keyword
+		String s1 = "Hello";
+		String s2 = "Hello";
+		// These two strings are exactly the same
+		// but if you declare them with "new", they will have different addresses
+		
+		// Always compares the memory address for objects
+		// These strings have the same address because didn't use "new" when creating
+		System.out.println(s1==s2); // true
+		// Java recognizes when you make strings of exactly the same value so they will share the same memory address (saves memory)
+		
+
+		String s3 = new String("Hello");
+		String s4 = new String("Hello");
+		
+		System.out.println(s3==s4);
+	}
+
+}

@@ -1,0 +1,13 @@
+package pillar;
+
+public class Playground {
+
+	public static void main(String[] args) {
+		
+		Car steves = new Car("Steve's car", 30, 150);
+		Car jims = new Car("Jim's Car", 20, 110);
+		
+		steves.Drive();
+		System.out.println("Is the car moving? " + steves.isMoving);
+	}
+}

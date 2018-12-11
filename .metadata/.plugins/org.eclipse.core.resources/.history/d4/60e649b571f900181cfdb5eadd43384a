@@ -1,0 +1,35 @@
+package pillar;
+
+// main method is in Playground.java
+
+public class Car {
+
+	// fields
+	String name;
+	int mpg;
+	int hp;
+	double tank;
+	boolean isMoving;
+	
+	// constructor builds an instance of the class aka and object
+	
+	public Car(String nameParam, int mpgParam, int hpParam) {
+		
+		this.name = nameParam;
+		this.mpg = mpgParam;
+		this.hp = hpParam;
+	}
+	
+	public void Drive() {
+		
+		this.isMoving = true;
+		System.out.println(this.name + " is driving");
+		
+	}
+	
+	public void Stop() {
+		
+		this.isMoving = false;
+		System.out.println("The car is stopped");
+	}
+}

@@ -1,0 +1,57 @@
+package com.revature.eval.java.core;
+
+import java.util.Map;
+
+public class Playground {
+	
+	public static void main(String[] args) {
+	
+	String test = "swhtello";
+	System.out.println(toPigLatin(test));
+	
+	}
+	
+	
+	
+	/**
+	 * 8. Implement a program that translates from English to Pig Latin.
+	 * 
+	 * Pig Latin is a made-up children's language that's intended to be confusing.
+	 * It obeys a few simple rules (below), but when it's spoken quickly it's really
+	 * difficult for non-children (and non-native speakers) to understand.
+	 * 
+	 * Rule 1: If a word begins with a vowel sound, add an "ay" sound to the end of
+	 * the word. Rule 2: If a word begins with a consonant sound, move it to the end
+	 * of the word, and then add an "ay" sound to the end of the word. There are a
+	 * few more rules for edge cases, and there are regional variants too.
+	 * 
+	 * See http://en.wikipedia.org/wiki/Pig_latin for more details.
+	 * 
+	 * @param string
+	 * @return
+	 */
+	public static String toPigLatin(String string) {
+		String pig = "";
+		String cons = "";
+		String root = "";
+		for (int i=0; i<string.length(); i++) {
+			if (string.charAt(i) != 'a' && string.charAt(i) != 'e' && string.charAt(i) != 'i' && string.charAt(i) != 'o' && string.charAt(i) != 'u') {
+				cons = cons + string.charAt(i);
+				root = string.substring(i+1); // starts with first vowel
+			} else {
+				break;
+			}
+
+			pig = root + cons;
+		}
+		//if (string.charAt(0) != 'a' || string.charAt(0) != 'e' || string.charAt(0) != 'i' || string.charAt(0) != 'o' || string.charAt(0) != 'u') {
+//		String root = string.substring(1);
+//			pig = root + cons + "ay";
+//		} else {
+//			pig = string + "ay";
+//		}
+		return pig;
+	}
+
+
+}
