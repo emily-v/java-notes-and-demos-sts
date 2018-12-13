@@ -26,15 +26,16 @@ public class Wrapper {
 		// UNLESS the values of the wrapper objects are within byte range (less than 127)
 		Integer i = 1000;
 		Integer I = 1000;
-		System.out.println(i==I); // false
+		System.out.println(i==I); // false; if i & I = 100 would be true
 		
 		add(I, I); // works because we are unboxing the wrapper objects
-		subtract(i, i); // works because we are auto-boxing the primitive
+		subtract(i, x); // works because we are auto-boxing the primitive
 		
-		sort(x); // prefers to invoke method with same data type (primitive vs. wrapper) but will work with either
+		sort(y); // prefers to invoke method with same data type (primitive vs. wrapper) but will work with either
 		
 		// Wrappers are object which have their own static and non-static methods
 		int k = Integer.parseInt("90");
+		System.out.println(k); // output 90 as int
 	}
 	
 	public static void add(int num1, int num2) {

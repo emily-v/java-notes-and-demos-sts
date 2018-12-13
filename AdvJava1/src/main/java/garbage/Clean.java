@@ -6,9 +6,10 @@ public class Clean {
 		
 		// Garbage collection:
 		// Once an object is no longer reachable or referenced in the code, it is marked for garbage collection aka deletion
-		// Objects have a finalized method that is called when an item is garbage collected
+		// Objects have a finalize method that is called when an item is garbage collected
 		
 		Book w = new Book("Wuthering Heights", 270);
+		
 		// w, rather than pointing to a book, now points to nothing
 		//w = null;
 		

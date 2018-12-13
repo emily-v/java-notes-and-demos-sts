@@ -10,7 +10,7 @@ public class StringFun {
 		// These two strings are exactly the same
 		// This is called the String pool - when strings with same value have the same address
 		
-		// Always compares the memory address for objects
+		// == Always compares the memory address for objects
 		// These strings have the same address because didn't use "new" when creating
 		System.out.println(s1==s2); // true
 		// Java recognizes when you make strings of exactly the same value so they will share the same memory address (saves memory)
