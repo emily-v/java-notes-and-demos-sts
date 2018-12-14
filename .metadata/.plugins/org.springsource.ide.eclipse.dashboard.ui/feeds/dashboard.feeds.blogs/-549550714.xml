@@ -32,7 +32,8 @@
   &lt;li&gt;spring-cloud-netflix-turbine-stream&lt;/li&gt;
   &lt;li&gt;spring-cloud-netflix-turbine&lt;/li&gt;
   &lt;li&gt;spring-cloud-netflix-zuul&lt;/li&gt;
-&lt;/ol&gt;&lt;h4&gt;&lt;a href="#what-is-maintenance-mode" class="anchor" name="what-is-maintenance-mode"&gt;&lt;/a&gt;What is Maintenance Mode?&lt;/h4&gt;
+&lt;/ol&gt;
+&lt;p&gt;This does not include the Eureka or concurrency-limits modules.&lt;/p&gt;&lt;h4&gt;&lt;a href="#what-is-maintenance-mode" class="anchor" name="what-is-maintenance-mode"&gt;&lt;/a&gt;What is Maintenance Mode?&lt;/h4&gt;
 &lt;p&gt;Placing a module in maintenance mode means that the Spring Cloud team will no longer be adding new features to the module. We will fix blocker bugs and security issues, and we will also consider and review small pull requests from the community.&lt;/p&gt;
 &lt;p&gt;We intend to continue to support these modules for a period of &lt;strong&gt;at least&lt;/strong&gt; a year from the general availability of the &lt;a href="https://github.com/spring-cloud/spring-cloud-release/milestones?direction=asc&amp;sort=due_date"&gt;Greenwich release train&lt;/a&gt;. &lt;/p&gt;&lt;h4&gt;&lt;a href="#replacements" class="anchor" name="replacements"&gt;&lt;/a&gt;Replacements&lt;/h4&gt;
 &lt;p&gt;We recommend the following as replacements for the functionality provided by these modules.&lt;/p&gt;
@@ -294,7 +295,7 @@ Flux&amp;lt;Person&amp;gt; rows = databaseClient.select()&#xD;
         .all();
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If you&amp;rsquo;re already familiar with Spring Data&amp;rsquo;s Repository abstraction, then you will recognize that Spring Data R2DBC repositories follow the exact same idea of extending &lt;code&gt;ReactiveCrudRepository&lt;/code&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint java"&gt;interface Person extends ReactiveCrudRepository&amp;lt;Person, Integer&amp;gt; {&#xD;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;interface PersonRepository extends ReactiveCrudRepository&amp;lt;Person, Integer&amp;gt; {&#xD;
 &#xD;
   @Query(&amp;quot;SELECT * FROM person WHERE firstname like $1&amp;quot;)&#xD;
   Flux&amp;lt;Person&amp;gt; findByFirstNameContains(String firstname);&#xD;
@@ -830,7 +831,7 @@ public class SampleApplication {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;It will start in well under a second and in less than 10MB heap. The same app with &lt;code&gt;@SpringBootApplication&lt;/code&gt; (including all autconfiguration) will start approximately 20% slower. Here are some benchmarks:&lt;/p&gt;
+&lt;p&gt;It will start in well under a second and in less than 10MB heap. The same app with &lt;code&gt;@SpringBootApplication&lt;/code&gt; (including all autoconfiguration) will start approximately 20% slower. Here are some benchmarks:&lt;/p&gt;
 &lt;/div&gt;
 &lt;table class="tableblock frame-all grid-all spread"&gt;
 &lt;colgroup&gt;

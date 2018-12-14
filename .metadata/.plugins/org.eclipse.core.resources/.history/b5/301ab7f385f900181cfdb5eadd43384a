@@ -1,7 +1,0 @@
-package inheritanceypolymorphism;
-
-public class Mouse extends Animal {
-	
-	
-
-}
