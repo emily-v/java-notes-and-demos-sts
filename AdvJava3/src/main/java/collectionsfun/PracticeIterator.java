@@ -9,7 +9,7 @@ public class PracticeIterator {
 		
 		City javaville = new City("Javaville", 50, 500);
 		City jstown = new City("JSTown", 65, 1000);
-		City styledale = new City("Styledale", 40, 425);
+		City styledale = new City("Styledale", 70, 425);
 
 		Set<City> cities = new TreeSet<City>();
 		

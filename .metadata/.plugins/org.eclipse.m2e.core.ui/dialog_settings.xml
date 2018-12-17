@@ -7,6 +7,8 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="AdvJava4"/>
+			<item value="CreditCardProject"/>
 			<item value="AdvJava3"/>
 			<item value="AccessModifiers"/>
 			<item value="AdvJava2"/>
@@ -49,6 +51,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="/Users/Emily/Documents/SpringToolSuite/CreditCardProject/src/main/java/creditcard/Account.java"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
