@@ -19,19 +19,24 @@ public class Reward { // * removed implements Comparable<Reward>
 	public void listRewards() {
 		System.out.println("Item " + selector + ": " + name + "\nRedeem for: " + value + " points\n");
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-//	public void selectReward() {
-//		switch(selection) {
-//		case "A": 
-//		}
+
+
+
+//	public int getValue() {
+//		return value;
 //	}
+//
+//
+//
+//	public void setValue(int value) {
+//		this.value = value;
+//	}
+	
+	
+	
+	
+	
+	
 	
 	// Sort Rewards TreeSet by point value (now using ArrayList so item # and value are in order of input)
 //	public int compareTo(Reward r) {

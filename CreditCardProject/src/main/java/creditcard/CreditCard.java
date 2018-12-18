@@ -10,7 +10,7 @@ public class CreditCard {
 
 	private double balance = 0;
 	private int rewardPoints = 0;
-	double limit = 1000;
+	private double limit = 10000;
 	boolean approve;
 
 	
@@ -46,32 +46,29 @@ public class CreditCard {
 		return approve;
 	}
 	
-	public double makePurchase (double balanceParam, double priceParam) {
+	// previously makePurchase
+	public double updateCardBalance (double balanceParam, double priceParam) {
 		double attemptedBalance = balanceParam + priceParam;
 		if (approve == true) {
 			this.balance = attemptedBalance;
-			System.out.println("Purchase Approved\n");
+			System.out.println("\n===== Purchase Approved! You're on your way!\n");
 		} else {
-		System.out.println("Purchase Denied: Spending over limit\n");
+		System.out.println("\n===== Purchase Denied: Your card balance limit is $" + this.limit + ". Make a payment to continue your adventure.\n");
 		}
 		return this.balance;
 	}
 	
-//	public double makePurchase (double balanceParam, double priceParam) {
-//		double attemptedBalance = balanceParam + priceParam;
-//		if (attemptedBalance <= limit) {
-//			this.balance = attemptedBalance;
-//			System.out.println("Purchase Approved\n");
-//		} else {
-//			System.out.println("Purchase Denied: Spending over limit\n");
-//		}
-//		return this.balance;
-//	}
+	// aka makePayment
+	public double updateCardBalance (double paymentParam) {
+		this.balance = this.balance - paymentParam;
+		System.out.println("\n===== Success! Thank you for your payment. Onward!\n");
+		return this.balance;
+	}
+	
 	
 	public int earnPoints(double purchaseAmount) {
 		if (approve == true) {
-			this.rewardPoints = this.rewardPoints + ((int) (purchaseAmount*.1));
-			
+			this.rewardPoints = this.rewardPoints + ((int) (purchaseAmount*.1));	
 		} 
 		return this.rewardPoints;
 	}
@@ -87,7 +84,7 @@ public class CreditCard {
 			writer.write("Rewards Balance History (last value is current balance)\n");
 			writer.close();
 		} catch (IOException e) {
-			System.out.println("rewards file not found");
+			System.out.println("Rewards record not found! Please call customer service");
 		}
 	}
 	
@@ -98,7 +95,7 @@ public class CreditCard {
 			writer.write(pointBalance.toString());
 			writer.close();
 		} catch (IOException e) {
-			System.out.println("rewards file not found");
+			System.out.println("Rewards record not found! Please call customer service");
 		}
 	}
 	
@@ -112,34 +109,34 @@ public class CreditCard {
 			}
 			reader.close();
 		} catch (IOException e) {
-			System.out.println("rewards file not found");
+			System.out.println("Rewards record not found! Please call customer service");
 		}
 		return lastLine;
 	}
 	
-	public int redeemPoints(String choice) {
+	public int redeemPoints(String choice) throws RewardsException {
 		boolean invalid = false;
 		int val = 0;
 		switch (choice) {
-      	case "A":
-      		val = 20;
-      		break;
-      	case "B":
-      		val = 150;
-      		break;
-      	case "C":
-      		val = 250;
-      		break;
-      	default:
-      		System.out.println("Invalid choice.");
-      		invalid = true;
-	  }
+	      	case "A":
+	      		val = 200;
+	      		break;
+	      	case "B":
+	      		val = 1500;
+	      		break;
+	      	case "C":
+	      		val = 2500;
+	      		break;
+	      	default:
+	      		System.out.println("\n===== Travel delay! Invalid choice.");
+	      		invalid = true;
+	    }
 		if (invalid == false) {
 			if (val > this.rewardPoints) {
-				System.out.println("Insufficient reward points available\n");
+				throw new RewardsException();
 			} else {
 				this.rewardPoints = this.rewardPoints - val;
-				System.out.println("You've redeemed your reward!\n"); // TODO prevent this line from printing if Invalid Choice
+				System.out.println("\n===== You've redeemed your reward!\n"); // TODO prevent this line from printing if Invalid Choice
 			}
 		}
 		return this.rewardPoints;
