@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Account {
+public class Transactions {
 
 	public static void main(String[] args) {
 		
@@ -59,6 +59,7 @@ public class Account {
             	  double price = input.nextDouble();
             	  card.makePurchase(card.getBalance(), price);
             	  card.earnPoints();
+            	  card.writeRewards(card.getRewardPoints());
                   break;
               case 2:
                   System.out.println("Your credit card balance is: $" + card.getBalance());
@@ -71,6 +72,7 @@ public class Account {
             	  System.out.println("Choose your reward!");
             	  String rewardChoice = input.next().toUpperCase();
             	  card.redeemPoints(rewardChoice);
+            	  card.writeRewards(card.getRewardPoints());
             	  break;
               case 0:
             	  System.out.println("You have quit the program");

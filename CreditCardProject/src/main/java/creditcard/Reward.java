@@ -20,6 +20,13 @@ public class Reward { // * removed implements Comparable<Reward>
 		System.out.println("Item " + selector + ": " + name + "\nRedeem for: " + value + " points\n");
 	}
 	
+	
+	
+	
+	
+	
+	
+	
 //	public void selectReward() {
 //		switch(selection) {
 //		case "A": 

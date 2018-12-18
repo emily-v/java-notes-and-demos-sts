@@ -1,5 +1,9 @@
 package creditcard;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class CreditCard {
 
 	private double balance = 0;
@@ -43,6 +47,17 @@ public class CreditCard {
 	public int earnPoints() {
 		this.rewardPoints = (int) (this.balance*.1);
 		return this.rewardPoints;
+	}
+	
+	public void writeRewards(Integer pointBalance) {
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter("../CreditCardProject/src/main/resources/rewards.txt", true));
+			writer.newLine();
+			writer.write(pointBalance.toString());
+			writer.close();
+		} catch (IOException e) {
+			System.out.println("rewards file not found");
+		}
 	}
 	
 	public int redeemPoints(String choice) {
