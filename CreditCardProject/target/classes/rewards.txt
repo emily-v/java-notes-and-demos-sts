@@ -1,3 +1,4 @@
 Rewards Balance History (last value is current balance)
 
-999
+500
+300

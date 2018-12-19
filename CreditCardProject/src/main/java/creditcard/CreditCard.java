@@ -7,33 +7,38 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class CreditCard {
-
-	private double balance = 0;
-	private int rewardPoints = 0;
-	double limit = 10000;
+	
+	private double balance;
+	private int rewardPoints;
+	
+	double limit;
 	boolean approve;
 
 	
-	// constructor with params
-//	public CreditCard(double balance, int rewardPoints, double limit) {
-//		super();
-//		this.balance = balance;
-//		this.rewardPoints = rewardPoints;
-//		this.limit = limit;
-//	}
-
-	// default constructor
-	public CreditCard() {
-		
+	// Constructor
+	public CreditCard(double balance, int rewardPoints, double limit) {
+		super();
+		this.balance = balance;
+		this.rewardPoints = rewardPoints;
+		this.limit = limit;
 	}
-
 	
 	public double getBalance() {
 		return this.balance;
 	}
-
-	public void setBalance(double balance) {
-		this.balance = balance;
+	
+	public int getRewardPoints() {
+		return this.rewardPoints;
+	}
+	
+	public void clearRewardsFile() {
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter("../CreditCardProject/src/main/resources/rewards.txt"));
+			writer.write("Rewards Balance History (last value is current balance)\n");
+			writer.close();
+		} catch (IOException e) {
+			System.out.println("Rewards record not found! Please call customer service");
+		}
 	}
 	
 	public boolean approvePurchase (double balanceParam, double priceParam) {
@@ -46,7 +51,7 @@ public class CreditCard {
 		return approve;
 	}
 	
-	// previously makePurchase
+	// to Make a Purchase
 	public double updateCardBalance (double balanceParam, double priceParam) {
 		double attemptedBalance = balanceParam + priceParam;
 		if (approve == true) {
@@ -58,30 +63,31 @@ public class CreditCard {
 		return this.balance;
 	}
 	
-	// aka makePayment
+	// to Make a Payment
 	public double updateCardBalance (double paymentParam) {
 		this.balance = this.balance - paymentParam;
 		System.out.println("\n===== Success! Thank you for your payment. Onward!\n");
 		return this.balance;
 	}
 	
-	
-	public int earnPoints(double purchaseAmount) {
+	// to Earn Points
+	public int updatePointsBalance(double purchaseAmount) {
 		if (approve == true) {
 			this.rewardPoints = this.rewardPoints + ((int) (purchaseAmount*.1));	
 		} 
 		return this.rewardPoints;
 	}
 	
-	public void clearRewards() {
-		try {
-			BufferedWriter writer = new BufferedWriter(new FileWriter("../CreditCardProject/src/main/resources/rewards.txt"));
-			writer.write("Rewards Balance History (last value is current balance)\n");
-			writer.close();
-		} catch (IOException e) {
-			System.out.println("Rewards record not found! Please call customer service");
+	// to Redeem Points
+	public int updatePointsBalance(int val) throws RewardsException {
+		if (val > this.rewardPoints) {
+			throw new RewardsException();
+		} else {
+			this.rewardPoints = this.rewardPoints - val;
+			System.out.println("\n===== You've redeemed your reward!\n");
 		}
-	}
+	return this.rewardPoints;
+}
 	
 	public void writeRewards(Integer pointBalance) {
 		try {
@@ -107,73 +113,5 @@ public class CreditCard {
 			System.out.println("Rewards record not found! Please call customer service");
 		}
 		return lastLine;
-	}
-	// -- Experimental redeemPoints method to pull point values from Rewards objects **this is now working!!**
-	public int redeemPoints(int val) throws RewardsException {
-		//boolean invalid = false;
-		//val = 0;
-//		switch (choice) {
-//	      	case "A":
-//	      		val = getValue();
-//	      		break;
-//	      	case "B":
-//	      		val = 1500;
-//	      		break;
-//	      	case "C":
-//	      		val = 2500;
-//	      		break;
-//	      	default:
-//	      		System.out.println("\n===== Travel delay! Invalid choice.");
-//	      		invalid = true;
-//	    }
-		//if (invalid == false) {
-			if (val > this.rewardPoints) {
-				throw new RewardsException();
-			} else {
-				this.rewardPoints = this.rewardPoints - val;
-				System.out.println("\n===== You've redeemed your reward!\n");
-			}
-		//}
-		return this.rewardPoints;
-	}
-	// -- END
-	
-	// -- Working method to redeemPoints using hard-coded point values
-//	public int redeemPoints(String choice) throws RewardsException {
-//		boolean invalid = false;
-//		int val = 0;
-//		switch (choice) {
-//	      	case "A":
-//	      		val = 200;
-//	      		break;
-//	      	case "B":
-//	      		val = 1500;
-//	      		break;
-//	      	case "C":
-//	      		val = 2500;
-//	      		break;
-//	      	default:
-//	      		System.out.println("\n===== Travel delay! Invalid choice.");
-//	      		invalid = true;
-//	    }
-//		if (invalid == false) {
-//			if (val > this.rewardPoints) {
-//				throw new RewardsException();
-//			} else {
-//				this.rewardPoints = this.rewardPoints - val;
-//				System.out.println("\n===== You've redeemed your reward!\n");
-//			}
-//		}
-//		return this.rewardPoints;
-//	}
-	// -- END
-	
-	
-	public int getRewardPoints() {
-		return this.rewardPoints;
-	}
-	
-	public void setRewardPoints(int rewardPoints) {
-		this.rewardPoints = rewardPoints;
 	}
 }
