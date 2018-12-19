@@ -10,7 +10,7 @@ public class CreditCard {
 
 	private double balance = 0;
 	private int rewardPoints = 0;
-	private double limit = 10000;
+	double limit = 10000;
 	boolean approve;
 
 	
@@ -73,11 +73,6 @@ public class CreditCard {
 		return this.rewardPoints;
 	}
 	
-//	public int earnPoints() {
-//		this.rewardPoints = (int) (this.balance*.1);
-//		return this.rewardPoints;
-//	}
-	
 	public void clearRewards() {
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("../CreditCardProject/src/main/resources/rewards.txt"));
@@ -113,34 +108,66 @@ public class CreditCard {
 		}
 		return lastLine;
 	}
-	
-	public int redeemPoints(String choice) throws RewardsException {
-		boolean invalid = false;
-		int val = 0;
-		switch (choice) {
-	      	case "A":
-	      		val = 200;
-	      		break;
-	      	case "B":
-	      		val = 1500;
-	      		break;
-	      	case "C":
-	      		val = 2500;
-	      		break;
-	      	default:
-	      		System.out.println("\n===== Travel delay! Invalid choice.");
-	      		invalid = true;
-	    }
-		if (invalid == false) {
+	// -- Experimental redeemPoints method to pull point values from Rewards objects **this is now working!!**
+	public int redeemPoints(int val) throws RewardsException {
+		//boolean invalid = false;
+		//val = 0;
+//		switch (choice) {
+//	      	case "A":
+//	      		val = getValue();
+//	      		break;
+//	      	case "B":
+//	      		val = 1500;
+//	      		break;
+//	      	case "C":
+//	      		val = 2500;
+//	      		break;
+//	      	default:
+//	      		System.out.println("\n===== Travel delay! Invalid choice.");
+//	      		invalid = true;
+//	    }
+		//if (invalid == false) {
 			if (val > this.rewardPoints) {
 				throw new RewardsException();
 			} else {
 				this.rewardPoints = this.rewardPoints - val;
-				System.out.println("\n===== You've redeemed your reward!\n"); // TODO prevent this line from printing if Invalid Choice
+				System.out.println("\n===== You've redeemed your reward!\n");
 			}
-		}
+		//}
 		return this.rewardPoints;
 	}
+	// -- END
+	
+	// -- Working method to redeemPoints using hard-coded point values
+//	public int redeemPoints(String choice) throws RewardsException {
+//		boolean invalid = false;
+//		int val = 0;
+//		switch (choice) {
+//	      	case "A":
+//	      		val = 200;
+//	      		break;
+//	      	case "B":
+//	      		val = 1500;
+//	      		break;
+//	      	case "C":
+//	      		val = 2500;
+//	      		break;
+//	      	default:
+//	      		System.out.println("\n===== Travel delay! Invalid choice.");
+//	      		invalid = true;
+//	    }
+//		if (invalid == false) {
+//			if (val > this.rewardPoints) {
+//				throw new RewardsException();
+//			} else {
+//				this.rewardPoints = this.rewardPoints - val;
+//				System.out.println("\n===== You've redeemed your reward!\n");
+//			}
+//		}
+//		return this.rewardPoints;
+//	}
+	// -- END
+	
 	
 	public int getRewardPoints() {
 		return this.rewardPoints;
@@ -149,7 +176,4 @@ public class CreditCard {
 	public void setRewardPoints(int rewardPoints) {
 		this.rewardPoints = rewardPoints;
 	}
-	
-	
-	
 }

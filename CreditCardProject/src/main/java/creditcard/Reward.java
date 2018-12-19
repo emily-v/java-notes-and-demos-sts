@@ -3,9 +3,13 @@ package creditcard;
 public class Reward { // * removed implements Comparable<Reward>
 
 	String name;
-	int value;
+	private int value;
 	String selector;
 	
+	// Default Constructor
+	public Reward() {
+		
+	}
 	
 	public Reward(String selector, String name, int value) {
 		super();
@@ -17,20 +21,25 @@ public class Reward { // * removed implements Comparable<Reward>
 
 
 	public void listRewards() {
-		System.out.println("Item " + selector + ": " + name + "\nRedeem for: " + value + " points\n");
+		System.out.println("\nItem " + selector + ": " + name + "\nRedeem for: " + value + " points");
+	}
+	
+	// Test method to get point value of rewards
+	public void test(int rewardValue) {
+		System.out.println("reward value is: " + rewardValue);
 	}
 
 
 
-//	public int getValue() {
-//		return value;
-//	}
-//
-//
-//
-//	public void setValue(int value) {
-//		this.value = value;
-//	}
+	public int getValue() {
+		return value;
+	}
+
+
+
+	public void setValue(int value) {
+		this.value = value;
+	}
 	
 	
 	
