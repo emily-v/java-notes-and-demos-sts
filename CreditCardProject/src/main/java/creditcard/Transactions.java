@@ -12,7 +12,7 @@ public class Transactions {
 
 	public static void main(String[] args) {
 		
-		CreditCard card = new CreditCard(0, 0, 10000);
+		CreditCard card = new CreditCard(0, 0, 5000);
 		
 		// -- Creating Rewards to go into ArrayList rewardsMenu
 		Reward wifi = new Reward("A", "1 hour free airport Wi-Fi", 60);
@@ -61,7 +61,7 @@ public class Transactions {
 	    				card.writeRewards(card.getRewardPoints());
 	    				break;
 	    			case 2:
-	    				System.out.println("\n===== Your credit card balance is: $" + card.getBalance());
+	    				System.out.println("\n===== Your credit card balance is: $" + String.format("%.2f", card.getBalance()));
 	    				System.out.println("===== Your reward points balance is: " + card.readRewards() + " points\n");
 	    				break;
 	    			
@@ -102,7 +102,7 @@ public class Transactions {
 	    				break;
 	    			case 4:
 	    				System.out.println("\n** How much would you like to pay?");
-	    				System.out.println("===== Travel Notice: Your credit card balance is: $" + card.getBalance());
+	    				System.out.println("===== Travel Notice: Your credit card balance is: $" + String.format("%.2f", card.getBalance()));
 	    				double payment = input.nextDouble();
 	    				card.updateCardBalance(payment);
 	    				break;
