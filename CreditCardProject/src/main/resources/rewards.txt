@@ -1,6 +1,7 @@
 Rewards Balance History (last value is current balance)
 
-354
-154
-154
-154
+356
+156
+156
+156
+312
